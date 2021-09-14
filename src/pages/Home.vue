@@ -2,6 +2,7 @@
     <div class="home">
         <div class="container">
             <h1>{{title}}</h1>
+            <h2>{{homeState}}</h2>
         </div>
     </div>
 </template>
@@ -16,6 +17,8 @@
         methods:{},
         async created () {},
         mounted () {},
-        computed : {}
+        computed : {
+            homeState() { return this.$store.state.homeModule.homeState }
+        }
     }
 </script>
