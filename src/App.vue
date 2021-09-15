@@ -15,9 +15,9 @@
 
 <script>
   // components
-  import AppHeader from './components/Header.vue';
-  import AppView from './components/View.vue';
-  import AppFooter from './components/Footer.vue';
+  import AppHeader from './layout/Header.vue';
+  import AppView from './layout/View.vue';
+  import AppFooter from './layout/Footer.vue';
   // import HelloWorld from './components/HelloWorld.vue';
 
 export default {
