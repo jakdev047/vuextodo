@@ -2,6 +2,7 @@
     <div class="todos-page">
         <div class="container">
             <h1>{{pageTitle}}</h1>
+            <add-todo />
             <div class="todos">
                 <div v-for="todo in allTodos" :key="todo.id" class="todo">
                     {{todo.title}}
@@ -12,11 +13,14 @@
 </template>
 
 <script>
+    import AddTodo from '../components/AddTodo.vue';
     import {mapGetters, mapActions} from 'vuex';
 
     export default {
         name: 'todos-page',
-        components: {},
+        components: {
+            AddTodo,
+        },
         data:()=>({
             title: 'Todos Page'
         }),
