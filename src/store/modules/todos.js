@@ -28,11 +28,16 @@ const actions = {
     });
     commit("newTodo", res.data);
   },
+  async deleteTodo({ commit }, id) {
+    await axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`);
+    commit("removeTodo", id);
+  },
 };
 const mutations = {
   // The only way to actually change state in a Vuex store is by committing a mutation
   setTodos: (state, payload) => (state.todos = payload),
   newTodo: (state, payload) => state.todos.unshift(payload),
+  removeTodo: (state, payload) => state.todos = state.todos.filter(todo=> todo.id !== payload),
 };
 
 export default {

@@ -6,6 +6,7 @@
             <div class="todos">
                 <div v-for="todo in allTodos" :key="todo.id" class="todo">
                     {{todo.title}}
+                    <i class="fa fa-trash" @click="deleteTodo(todo.id)"></i>
                 </div>
             </div>
         </div>
@@ -32,7 +33,8 @@
         },
         methods:{
             ...mapActions({
-                getTodos: 'getTodos'
+                getTodos: 'getTodos',
+                deleteTodo: 'deleteTodo'
             })
         },
         async created () {
@@ -59,6 +61,13 @@
         border-radius: 5px;
         text-align: center;
         position: relative;
+        cursor: pointer;
+    }
+
+    .todo i {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
         cursor: pointer;
     }
 
