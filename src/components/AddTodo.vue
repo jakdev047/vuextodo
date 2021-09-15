@@ -27,8 +27,12 @@
             }),
             onSubmit(e) {
                 e.preventDefault();
-                this.addTodo(this.title);
-                this.title = ""
+                if(!this.title) {
+                    alert("Please Fill in the Todo")
+                }
+                else {
+                    this.addTodo(this.title);
+                }
             }
         },
         async created () {},
