@@ -12,7 +12,7 @@
 </template>
 
 <script>
-    import {mapGetters} from 'vuex';
+    import {mapGetters, mapActions} from 'vuex';
 
     export default {
         name: 'todos-page',
@@ -26,8 +26,14 @@
                 allTodos: 'allTodos'
             })
         },
-        methods:{},
-        async created () {},
+        methods:{
+            ...mapActions({
+                getTodos: 'getTodos'
+            })
+        },
+        async created () {
+            this.getTodos();
+        },
         mounted () {}, 
     }
 </script>

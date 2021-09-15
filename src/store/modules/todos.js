@@ -1,10 +1,8 @@
+import axios from "axios";
+
 const state = {
   title: "Todos",
-  todos: [
-    { id: 1, title: "Todo One" },
-    { id: 2, title: "Todo Two" },
-    { id: 3, title: "Todo Three" },
-  ],
+  todos: [],
 };
 
 const getters = {
@@ -19,9 +17,14 @@ const getters = {
 
 const actions = {
   // get data source method
+  async getTodos({ commit }) {
+    const res = await axios.get(`https://jsonplaceholder.typicode.com/todos`);
+    commit("setTodos", res.data);
+  },
 };
 const mutations = {
   // The only way to actually change state in a Vuex store is by committing a mutation
+  setTodos: (state, payload) => (state.todos = payload),
 };
 
 export default {
