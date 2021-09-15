@@ -1,24 +1,55 @@
 <template>
-    <div class="todos">
+    <div class="todos-page">
         <div class="container">
             <h1>{{pageTitle}}</h1>
+            <div class="todos">
+                <div v-for="todo in allTodos" :key="todo.id" class="todo">
+                    {{todo.title}}
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+    import {mapGetters} from 'vuex';
+
     export default {
         name: 'todos-page',
         components: {},
         data:()=>({
             title: 'Todos Page'
         }),
+        computed: {
+            ...mapGetters({
+                pageTitle: 'pageTitle',
+                allTodos: 'allTodos'
+            })
+        },
         methods:{},
         async created () {},
-        mounted () {},
-        computed : {
-            // to get data from store 
-            pageTitle() { return this.$store.state.todos.title }
-        }
+        mounted () {}, 
     }
 </script>
+
+<style scoped>
+    .todos-page {
+        margin: 0 0 30px;
+    }
+    .todos {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 1rem;
+    }
+    .todo {
+        border: 1px solid #ccc;
+        background: #41b883;
+        color: #fff;
+        padding: 1rem;
+        border-radius: 5px;
+        text-align: center;
+        position: relative;
+        cursor: pointer;
+    }
+
+</style>
