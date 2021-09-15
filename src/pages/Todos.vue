@@ -4,8 +4,22 @@
             <h1>{{pageTitle}}</h1>
             <add-todo />
             <filter-todo />
+            <div class="legend">
+                <span>Double click to mark as complete</span>
+                <span>
+                    <span class="incomplete-box"></span> = Incomplete
+                </span>
+                <span>
+                    <span class="complete-box"></span> = Complete
+                </span>
+            </div>
             <div class="todos">
-                <div v-for="todo in allTodos" :key="todo.id" class="todo">
+                <div 
+                    v-for="todo in allTodos" :key="todo.id" 
+                    class="todo" 
+                    @click="onClick(todo)" 
+                    v-bind:class="{'is-complete':todo.completed}"
+                >
                     {{todo.title}}
                     <i class="fa fa-trash" @click="deleteTodo(todo.id)"></i>
                 </div>
@@ -37,8 +51,17 @@
         methods:{
             ...mapActions({
                 getTodos: 'getTodos',
-                deleteTodo: 'deleteTodo'
-            })
+                deleteTodo: 'deleteTodo',
+                updateTodo: 'updateTodo'
+            }),
+            onClick(todo){
+                const payload = {
+                    id: todo.id,
+                    title: todo.title,
+                    completed: !todo.completed
+                }
+                this.updateTodo(payload);
+            }
         },
         async created () {
             this.getTodos();
@@ -72,6 +95,36 @@
         right: 10px;
         bottom: 10px;
         cursor: pointer;
+    }
+
+    .legend {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 1rem;
+    }
+
+    .incomplete-box {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background: #41b883;
+    }
+
+    .complete-box {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background: #35495e;
+    }
+
+    .is-complete {
+        background: #35495e;
+    }
+
+    @media (max-width: 500px) {
+        .todos {
+            grid-template-columns: 1fr;
+        }
     }
 
 </style>

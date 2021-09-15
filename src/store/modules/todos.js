@@ -38,12 +38,22 @@ const actions = {
     const res = await axios.get(`https://jsonplaceholder.typicode.com/todos?_limit=${limit}`);
     commit("setTodos", res.data);
   },
+  async updateTodo({commit},payload) {
+    const res = await axios.put(`https://jsonplaceholder.typicode.com/todos/${payload.id}`,payload);
+    commit("updateTodo", res.data);
+  },
 };
 const mutations = {
   // The only way to actually change state in a Vuex store is by committing a mutation
   setTodos: (state, payload) => (state.todos = payload),
   newTodo: (state, payload) => state.todos.unshift(payload),
   removeTodo: (state, payload) => state.todos = state.todos.filter(todo=> todo.id !== payload),
+  updateTodo: (state, payload) => {
+    const index = state.todos.findIndex(todo => todo.id === payload.id);
+    if(index !== -1) {
+      state.todos.splice(index, 1,payload);
+    }
+  },
 };
 
 export default {
