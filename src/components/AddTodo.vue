@@ -1,7 +1,7 @@
 <template>
     <div class="add-todo-page">
         <div class="container my-5">
-            <h3>Add Todo</h3>
+            <h4>Add Todo</h4>
             <div class="add">
                <form @submit="onSubmit">
                    <input type="text" v-model="title" placeholder="Add Todo..."/>

@@ -3,6 +3,7 @@
         <div class="container">
             <h1>{{pageTitle}}</h1>
             <add-todo />
+            <filter-todo />
             <div class="todos">
                 <div v-for="todo in allTodos" :key="todo.id" class="todo">
                     {{todo.title}}
@@ -15,12 +16,14 @@
 
 <script>
     import AddTodo from '../components/AddTodo.vue';
+    import FilterTodo from '../components/FilterTodo.vue';
     import {mapGetters, mapActions} from 'vuex';
 
     export default {
         name: 'todos-page',
         components: {
             AddTodo,
+            FilterTodo
         },
         data:()=>({
             title: 'Todos Page'
