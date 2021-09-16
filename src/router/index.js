@@ -5,6 +5,7 @@ import VueRouter from "vue-router";
 import HomePage from "../pages/Home.vue";
 import AboutPage from "../pages/About.vue";
 import TodosPage from "../pages/Todos.vue";
+import EmployeesPage from "../pages/Employees.vue";
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,11 @@ const router = new VueRouter({
       path: "/todos",
       name: "todos-page",
       component: TodosPage,
+    },
+    {
+      path: "/employees",
+      name: "employees-page",
+      component: EmployeesPage,
     },
   ],
 });

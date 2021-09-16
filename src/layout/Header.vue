@@ -19,6 +19,11 @@
                                 Todos
                             </router-link>
                         </li>
+                        <li class="nav-item">
+                            <router-link to="/employees" class="nav-link">
+                                Employees
+                            </router-link>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -4,6 +4,7 @@ import Vuex from "vuex";
 // all modules import
 import HomePageModule from "./modules/home";
 import TodosModule from "./modules/todos";
+import EmployeesModule from "./modules/employees";
 
 Vue.use(Vuex);
 
@@ -11,6 +12,7 @@ const store = new Vuex.Store({
   modules: {
     homeModule: HomePageModule,
     todos: TodosModule,
+    employees: EmployeesModule,
   },
   state: {
     // data initialize
