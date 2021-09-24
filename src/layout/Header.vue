@@ -24,6 +24,11 @@
                                 Employees
                             </router-link>
                         </li>
+                        <li class="nav-item">
+                            <router-link to="/vue-learning" class="nav-link">
+                                Vue Learning
+                            </router-link>
+                        </li>
                     </ul>
                 </div>
             </div>
