@@ -7,6 +7,10 @@
             <div class="form-group">
                 <input type="text" :value="title" class="form-control" />
             </div>
+            <h3>{{twData}}</h3>
+            <div class="form-group">
+                <input type="text" v-model="twData" class="form-control" />
+            </div>
             <div>
                 <h3>{{number}}</h3>
                 <div class="form-group">
@@ -27,6 +31,7 @@
             profileLink: 'https://jakdev047.github.io',
             classes: ['title', 'title-style'],
             number: 50,
+            twData: "Two Way Data Binding"
         }),
         methods:{
             welcomeMethod(greetings) {
