@@ -23,6 +23,7 @@
       <div class="form-group">
         <button @click.alt="modifier" class="btn btn-primary">Modifier</button>
       </div>
+      <p v-if="show">Show</p>
     </div>
   </div>
 </template>
@@ -37,6 +38,7 @@ export default {
     classes: ["title", "title-style"],
     number: 50,
     twData: "Two Way Data Binding",
+    show: false
   }),
   methods: {
     welcomeMethod(greetings) {
