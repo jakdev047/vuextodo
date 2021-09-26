@@ -24,21 +24,26 @@
         <button @click.alt="modifier" class="btn btn-primary">Modifier</button>
       </div>
       <p v-if="show">Show</p>
+      <demo :propsTitle="propsTitle"/>
     </div>
   </div>
 </template>
 
 <script>
+import Demo from '../components/Demo.vue';
 export default {
   name: "vue-learning",
-  components: {},
+  components: {
+    Demo,
+  },
   data: () => ({
     title: "Vue",
     profileLink: "https://jakdev047.github.io",
     classes: ["title", "title-style"],
     number: 50,
     twData: "Two Way Data Binding",
-    show: false
+    show: false,
+    propsTitle: 'Props Title'
   }),
   methods: {
     welcomeMethod(greetings) {
