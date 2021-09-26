@@ -24,7 +24,7 @@
         <button @click.alt="modifier" class="btn btn-primary">Modifier</button>
       </div>
       <p v-if="show">Show</p>
-      <demo :propsTitle="propsTitle"/>
+      <demo :propsTitle="propsTitle" @titleChange="titleChange"/>
     </div>
   </div>
 </template>
@@ -53,7 +53,10 @@ export default {
       this.number += increment;
     },
     modifier(){
-        console.log("Modifier");
+      console.log("Modifier");
+    },
+    titleChange(payload) {
+      console.log("payload",payload)
     }
   },
   async created() {},
