@@ -25,12 +25,19 @@
       </div>
       <p v-if="show">Show</p>
       <demo :propsTitle="propsTitle" @titleChange="titleChange"/>
+      <div class="form-group">
+        <div v-for="user in users" :key="user.id">
+          <span>{{ user.id }}. </span>
+          <span>{{ user.name | nameSnippet }}</span>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import Demo from '../components/Demo.vue';
+import axios from 'axios';
 export default {
   name: "vue-learning",
   components: {
@@ -43,7 +50,8 @@ export default {
     number: 50,
     twData: "Two Way Data Binding",
     show: false,
-    propsTitle: 'Props Title'
+    propsTitle: 'Props Title',
+    users: [],
   }),
   methods: {
     welcomeMethod(greetings) {
@@ -57,9 +65,15 @@ export default {
     },
     titleChange(payload) {
       console.log("payload",payload)
+    },
+    async getUsers(){
+      const res  = await axios.get('https://jsonplaceholder.typicode.com/users');
+      return res?.data;
     }
   },
-  async created() {},
+  async created() {
+    this.users = await this.getUsers();
+  },
   mounted() {},
   computed: {},
 };
