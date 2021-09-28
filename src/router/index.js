@@ -7,6 +7,7 @@ import AboutPage from "../pages/About.vue";
 import TodosPage from "../pages/Todos.vue";
 import EmployeesPage from "../pages/Employees.vue";
 import VueLearning from "../pages/VueLearning.vue";
+import Profile from "../pages/Profile.vue";
 
 Vue.use(VueRouter);
 
@@ -39,6 +40,11 @@ const router = new VueRouter({
       path: "/vue-learning",
       name: "vue-learning",
       component: VueLearning,
+    },
+    {
+      path: "/profile/:profile_id",
+      name: "profile",
+      component: Profile,
     },
   ],
 });
