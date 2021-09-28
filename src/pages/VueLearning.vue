@@ -26,7 +26,10 @@
       <p v-if="show">Show</p>
       <demo :propsTitle="propsTitle" @titleChange="titleChange"/>
       <div class="form-group">
-        <div v-for="user in users" :key="user.id">
+        <input type="text" v-model="searchUser" class="form-control" placeholder="Search..." />
+      </div>
+      <div class="form-group">
+        <div v-for="user in filterSearch" :key="user.id">
           <span>{{ user.id }}. </span>
           <span>{{ user.name | nameSnippet }}</span>
         </div>
@@ -52,7 +55,13 @@ export default {
     show: false,
     propsTitle: 'Props Title',
     users: [],
+    searchUser: '',
   }),
+  computed:{
+    filterSearch(){
+      return this.users.filter(user =>  user.name.match(this.searchUser))
+    }
+  },
   methods: {
     welcomeMethod(greetings) {
       return `${greetings} ${this?.title}`;
@@ -75,7 +84,6 @@ export default {
     this.users = await this.getUsers();
   },
   mounted() {},
-  computed: {},
 };
 </script>
 
