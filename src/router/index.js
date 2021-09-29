@@ -42,7 +42,7 @@ const router = new VueRouter({
       component: VueLearning,
     },
     {
-      path: "/profile/:profile_id",
+      path: "/profile/:id",
       name: "profile",
       component: Profile,
     },
